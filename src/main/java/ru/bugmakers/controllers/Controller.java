@@ -9,13 +9,13 @@ import ru.bugmakers.dto.ReturnToMobile;
 @RestController
 @RequestMapping("/")
 public class Controller {
-    @RequestMapping(method = RequestMethod.GET, value = "/getroadsquality")
+    @RequestMapping(method = RequestMethod.GET, value = "/getquality")
     public @ResponseBody
     ReturnToMobile getRoadsQuality() {
         return null;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/setroadsquality", params = {"lat", "lng", "value"})
+    @RequestMapping(method = RequestMethod.POST, value = "/setquality", params = {"lat", "lng", "value"})
     public @ResponseBody
     ReturnToMobile setRoadsQuality(@RequestParam("lat") String lat, @RequestParam("lng") String lng, @RequestParam("value") String value) {
         return null;
