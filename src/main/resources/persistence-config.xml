@@ -7,20 +7,20 @@
     <bean class="org.springframework.data.web.config.SpringDataWebConfiguration"/>
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${jdbc.driver}"/>
-        <property name="jdbcUrl" value="${jdbc.url}"/>
-        <property name="user" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClass" value="org.hsqldb.jdbcDriver"/>
+        <property name="jdbcUrl" value="jdbc:hsqldb:file:/opt/database"/>
+        <property name="user" value="user"/>
+        <property name="password" value="user"/>
         <property name="initialPoolSize" value="1"/>
         <property name="minPoolSize" value="1"/>
         <property name="maxPoolSize" value="15"/>
     </bean>
 
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="database" value="POSTGRESQL"/>
+        <property name="database" value="HSQL"/>
         <property name="showSql" value="true"/>
         <property name="generateDdl" value="true"/>
-        <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
+        <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect"/>
     </bean>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
