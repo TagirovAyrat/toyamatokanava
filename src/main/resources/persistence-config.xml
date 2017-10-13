@@ -6,7 +6,7 @@
 
     <bean class="org.springframework.data.web.config.SpringDataWebConfiguration"/>
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="org.hsqldb.jdbcDriver"/>
         <property name="jdbcUrl" value="jdbc:hsqldb:file:/opt/database"/>
         <property name="user" value="user"/>
@@ -27,24 +27,50 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
         <property name="packagesToScan" value="ru.bugmakers.entity"/>
-        <!--детали конфигурации поставщика постоянства (hibernate) -->
+        &lt;!&ndash;детали конфигурации поставщика постоянства (hibernate) &ndash;&gt;
         <property name="jpaProperties">
             <props>
-                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>-->
+                &lt;!&ndash;<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>&ndash;&gt;
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
 
+    </bean>-->
+
+    <!-- EntityManagerFactory -->
+    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--Поставщик данных - hibernate-->
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <!--поиск сущностей в этом пакете-->
+        <property name="packagesToScan" value="ru.bugmakers"/>
+        <!--детали конфигурации поставщика постоянства (hibernate) -->
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:file:/opt/database"/>
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <property name="entityManagerFactory" ref="emf"/>
     </bean>
 
     <jpa:repositories base-package="ru.bugmakers.da"
-                      entity-manager-factory-ref="entityManagerFactory"
-                      transaction-manager-ref="transactionManager"/>
+                      entity-manager-factory-ref="emf"
+    transaction-manager-ref="transactionManager"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
