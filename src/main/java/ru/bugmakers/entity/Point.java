@@ -16,8 +16,8 @@ public class Point {
     @Column(name = "LAT")
     private String lat;
 
-    @Column(name = "LON")
-    private String lon;
+    @Column(name = "LNG")
+    private String lng;
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class Point {
         this.lat = lat;
     }
 
-    public String getLon() {
-        return lon;
+    public String getLng() {
+        return lng;
     }
 
-    public void setLon(String lon) {
-        this.lon = lon;
+    public void setLng(String lng) {
+        this.lng = lng;
     }
 }
