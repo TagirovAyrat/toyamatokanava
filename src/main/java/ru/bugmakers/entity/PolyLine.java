@@ -7,8 +7,8 @@ import java.util.List;
  * Created by ivan
  */
 @Entity
-@Table(name = "POLILINE")
-public class PoliLine {
+@Table(name = "POLYLINE")
+public class PolyLine {
 
     @Id
     @GeneratedValue
