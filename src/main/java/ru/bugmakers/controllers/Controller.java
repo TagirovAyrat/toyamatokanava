@@ -5,7 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.bugmakers.dto.ReturnToMobile;
+import ru.bugmakers.entity.Point;
 import ru.bugmakers.service.impl.KanavaServiceImpl;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by ivan
@@ -22,9 +27,10 @@ public class Controller {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getquality")
     public @ResponseBody
-    ReturnToMobile getRoadsQuality() {
-
-        return null;
+    List<Point> getRoadsQuality() {
+        List<Point> points = kanavaService.getAllPoints();
+        points.sort(Comparator.comparingLong(Point::getId));
+        return points;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/setquality", params = {"lat", "lng", "value"})
