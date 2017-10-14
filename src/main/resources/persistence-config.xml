@@ -59,8 +59,8 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="url" value="jdbc:hsqldb:file:/opt/database"/>
-        <property name="username" value="root"/>
+        <property name="url" value="jdbc:hsqldb:file:/home/ivan/distrib/1/database"/>
+        <property name="username" value="SA"/>
         <property name="password" value=""/>
     </bean>
 
