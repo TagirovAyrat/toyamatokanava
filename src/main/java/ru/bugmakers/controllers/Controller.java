@@ -41,7 +41,7 @@ public class Controller {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getkml")
+    @RequestMapping(method = RequestMethod.GET, value = "/getkml", headers = "Access-Control-Allow-Origin=*")
     public @ResponseBody
     ReturnToConsole getKml() {
         return kanavaService.getKml();
