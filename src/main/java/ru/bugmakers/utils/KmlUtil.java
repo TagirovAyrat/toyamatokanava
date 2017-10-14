@@ -82,7 +82,7 @@ public class KmlUtil {
         }
 
         String fileName = new SimpleDateFormat("HHmmss").format(new Date()) + ".kml";
-        File file = new File(fileName);
+        File file = new File("/opt/tomcat/temp/" + fileName);
 
         try {
             Marshaller marshaller = JAXBContext.newInstance(new Class[]{Kml.class}).createMarshaller();
