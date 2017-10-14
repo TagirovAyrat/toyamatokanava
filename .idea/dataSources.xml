@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="1" uuid="f887d1e5-9e1b-4691-97a5-cd086be8c19d">
+    <data-source source="LOCAL" name="database.tmp" uuid="f887d1e5-9e1b-4691-97a5-cd086be8c19d">
       <driver-ref>hsqldb.local</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
-      <jdbc-url>jdbc:hsqldb:file:$USER_HOME$/distrib/1/database</jdbc-url>
+      <jdbc-url>jdbc:hsqldb:file:C:/database.tmp/database</jdbc-url>
     </data-source>
   </component>
 </project>

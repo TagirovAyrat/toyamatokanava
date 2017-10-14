@@ -20,7 +20,9 @@ public class Point {
     private String lng;
     @Column(name = "LEVEL")
     private String level;
+    public Point () {
 
+    }
     public Point(String lng, String lat, String level) {
         this.lng = lng;
         this.lat = lat;

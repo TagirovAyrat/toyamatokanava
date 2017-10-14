@@ -21,10 +21,7 @@ public class KanavaServiceImpl implements KanavaService {
 
     @Transactional
     public Point savePoint(String lat, String lng, String value) {
-        Point point = new Point();
-        point.setLat(lat);
-        point.setLng(lng);
-        point.setLevel(Integer.parseInt(value));
+        Point point = new Point(lng, lat, value);
         return pointRepo.save(point);
     }
 
