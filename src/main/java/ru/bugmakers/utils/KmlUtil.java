@@ -81,7 +81,7 @@ public class KmlUtil {
 
         }
 
-        String fileName = "/opt/tomcat/temp/" + new SimpleDateFormat("HHmmss").format(new Date()) + ".kml";
+        String fileName = new SimpleDateFormat("HHmmss").format(new Date()) + ".kml";
         File file = new File(fileName);
 
         try {
