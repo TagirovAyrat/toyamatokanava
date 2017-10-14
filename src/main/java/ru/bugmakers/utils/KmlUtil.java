@@ -8,8 +8,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ public class KmlUtil {
     private static final String RED = "ff5252ff";
 
 
-    public static void createKml(List<Point> points) {
+    public static String createKml(List<Point> points) {
 
         String green = "green";
         String yellow = "yellow";
@@ -79,7 +81,8 @@ public class KmlUtil {
 
         }
 
-        File file = new File("/home/ivan/distrib/1/road.kml");
+        String fileName = "/opt/tomcat/" + new SimpleDateFormat("HHmmss").format(new Date()) + ".kml";
+        File file = new File(fileName);
 
         try {
             Marshaller marshaller = JAXBContext.newInstance(new Class[]{Kml.class}).createMarshaller();
@@ -106,7 +109,7 @@ public class KmlUtil {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-
+        return fileName;
     }
 
 //    public static void main(String[] args) {

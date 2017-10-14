@@ -5,9 +5,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.bugmakers.da.PointRepo;
+import ru.bugmakers.dto.ReturnToConsole;
 import ru.bugmakers.entity.Point;
 import ru.bugmakers.service.KanavaService;
+import ru.bugmakers.utils.KmlUtil;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,5 +33,13 @@ public class KanavaServiceImpl implements KanavaService {
 
     public List<Point> getAllPoints() {
         return pointRepo.findAll();
+    }
+
+    public ReturnToConsole getKml() {
+
+        List<Point> points = getAllPoints();
+        points.sort(Comparator.comparingLong(Point::getId));
+        String fileName = KmlUtil.createKml(points);
+        return new ReturnToConsole(fileName);
     }
 }
