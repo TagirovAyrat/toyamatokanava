@@ -157,8 +157,10 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://31.148.99.128:8080/manager/text</url>
+                    <url>http://93.170.123.58:8080/manager/text</url>
                     <server>TomcatServer</server>
+                    <username>scriptuser</username>
+                    <password>P@s$W0rd</password>
                     <!--<path>/ROOT</path>-->
                 </configuration>
             </plugin>
