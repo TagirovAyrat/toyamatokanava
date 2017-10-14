@@ -35,11 +35,11 @@ public class KanavaServiceImpl implements KanavaService {
         return pointRepo.findAll();
     }
 
-    public ReturnToConsole getKml() {
+    public String getKml() {
 
         List<Point> points = getAllPoints();
         points.sort(Comparator.comparingLong(Point::getId));
         String fileName = KmlUtil.createKml(points);
-        return new ReturnToConsole(fileName);
+        return fileName;
     }
 }

@@ -1,15 +1,14 @@
 package ru.bugmakers.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.bugmakers.dto.ReturnToConsole;
 import ru.bugmakers.dto.ReturnToMobile;
 import ru.bugmakers.entity.Point;
 import ru.bugmakers.service.impl.KanavaServiceImpl;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -41,10 +40,12 @@ public class Controller {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getkml", headers = "Access-Control-Allow-Origin=*")
-    public @ResponseBody
-    ReturnToConsole getKml() {
-        return kanavaService.getKml();
+    @RequestMapping(method = RequestMethod.GET, value = "/getkml")
+    public ResponseEntity<String> getKml() {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Content-type", "text/html");
+        return new ResponseEntity<String>(kanavaService.getKml(), responseHeaders, HttpStatus.OK);
     }
 
 }
