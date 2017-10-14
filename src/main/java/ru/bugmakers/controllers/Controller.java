@@ -28,10 +28,10 @@ public class Controller {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getquality")
     public @ResponseBody
-    List<Point> getRoadsQuality() {
+    ReturnToMobile getRoadsQuality() {
         List<Point> points = kanavaService.getAllPoints();
         points.sort(Comparator.comparingLong(Point::getId));
-        return points;
+        return new ReturnToMobile(points);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/setquality", params = {"lat", "lng", "value"})

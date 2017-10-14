@@ -81,7 +81,7 @@ public class KmlUtil {
 
         }
 
-        String fileName = "/opt/tomcat/" + new SimpleDateFormat("HHmmss").format(new Date()) + ".kml";
+        String fileName = "/opt/tomcat/temp/" + new SimpleDateFormat("HHmmss").format(new Date()) + ".kml";
         File file = new File(fileName);
 
         try {
@@ -112,15 +112,15 @@ public class KmlUtil {
         return fileName;
     }
 
-//    public static void main(String[] args) {
-//        List<Point> points = new ArrayList<>();
-////        points.add(new Point("48.7431836", "55.7504848", "1"));
-////        points.add(new Point("48.7444282", "55.751789", "1"));
-//        points.add(new Point("48.7478828", "55.7512456", "1"));
-//        points.add(new Point("48.7472177", "55.7502916", "2"));
-//        points.add(new Point("48.747164", "55.750207", "3"));
-//        points.add(new Point("48.7467456", "55.7496274", "1"));
-//        createKml(points);
-//    }
+    public static void main(String[] args) {
+        List<Point> points = new ArrayList<>();
+//        points.add(new Point("48.7431836", "55.7504848", "1"));
+//        points.add(new Point("48.7444282", "55.751789", "1"));
+        points.add(new Point("48.7478828", "55.7512456", "1"));
+        points.add(new Point("48.7472177", "55.7502916", "2"));
+        points.add(new Point("48.747164", "55.750207", "3"));
+        points.add(new Point("48.7467456", "55.7496274", "1"));
+        createKml(points);
+    }
 
 }
